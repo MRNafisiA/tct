@@ -1,0 +1,177 @@
+/* toggle */
+.toggle {
+    --primary-color: var(--tct-primary-color);
+    --primary-color-rgb: var(--tct-primary-color-rgb);
+    --switch-background-color: var(--color-white);
+    --switch-background-color-rgb: var(--color-white-rgb);
+    --rect-background-color: var(--color-oil-3);
+    --rect-background-color-rgb: var(--color-oil-3);
+    --disable-color: var(--color-oil-6);
+    --disable-color-rgb: var(--color-oil-6-rgb);
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+
+.size-medium {
+    width: 3.5rem;
+    height: 2.5rem;
+}
+
+.size-large {
+    width: 4.5rem;
+    height: 3rem;
+}
+
+/* input */
+.toggle > input {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 10%;
+    right: 5%;
+    width: 90%;
+    height: 80%;
+    opacity: 0;
+    z-index: 4;
+}
+
+
+.condition-enabled > input {
+    cursor: pointer;
+}
+
+.condition-disabled > input {
+    cursor: not-allowed;
+}
+
+/* rectangle */
+.toggle::before {
+    content: ' ';
+    background: var(--rect-background-color);
+    position: absolute;
+    z-index: 1;
+}
+
+.toggle::after {
+    content: ' ';
+    box-shadow: 0 0 0.125rem 0 rgba(0, 0, 0, 0.4);
+    position: absolute;
+    z-index: 2;
+    transition: background var(--animation-duration-1);
+}
+
+
+.shape-circle::before,
+.shape-circle::after {
+    border-radius: 0.875rem;
+}
+
+.shape-square::before,
+.shape-square::after {
+    border-radius: var(--border-radius-size-2);
+}
+
+
+.size-medium::before,
+.size-medium::after {
+    width: 2rem;
+    height: 0.875rem;
+}
+
+.size-large::before,
+.size-large::after {
+    width: 2.5rem;
+    height: 1rem;
+}
+
+
+.condition-enabled.status-checked::after {
+    background: rgba(var(--primary-color-rgb), 0.7);
+}
+
+/* title */
+.toggle > span {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 3;
+}
+
+/* switch */
+.toggle > span::after {
+    content: ' ';
+    position: absolute;
+    box-shadow: 0 0 0.1875rem 0 rgba(0, 0, 0, 0.6);
+    transition: box-shadow var(--animation-duration-1),
+    right var(--animation-duration-1),
+    background var(--animation-duration-1);
+}
+
+
+.size-medium > span::after {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.size-medium.status-checked > span::after {
+    right: -0.05rem;
+}
+
+.size-medium:not(.status-checked) > span::after {
+    right: -1.2rem;
+}
+
+
+.size-large > span::after {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.size-large.status-checked > span::after {
+    right: -0.05rem;
+}
+
+.size-large:not(.status-checked) > span::after {
+    right: -1.45rem;
+}
+
+
+.shape-circle > span::after {
+    border-radius: 50%;
+}
+
+.shape-square > span::after {
+    border-radius: var(--border-radius-size-2);
+}
+
+
+.condition-enabled > input:hover + span::after {
+    box-shadow: 0 0 0.125rem 0 rgba(0, 0, 0, 0.4),
+    0 0 0 0.375rem rgba(var(--primary-color-rgb), 0.3);
+}
+
+.condition-enabled > input:focus + span::after {
+    box-shadow: 0 0 0.125rem 0 rgba(0, 0, 0, 0.4),
+    0 0 0 0.375rem rgba(var(--primary-color-rgb), 0.5);
+}
+
+.condition-enabled.status-checked > span::after {
+    background: var(--primary-color);
+}
+
+.condition-enabled:not(.status-checked) > span::after {
+    background: var(--switch-background-color);
+}
+
+.condition-disabled.status-checked > span::after {
+    background: var(--disable-color);
+}
+
+.condition-disabled:not(.status-checked) > span::after {
+    background: var(--switch-background-color);
+}

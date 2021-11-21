@@ -1,0 +1,162 @@
+/* checkbox */
+.checkbox {
+    --primary-color: var(--tct-primary-color);
+    --primary-color-rgb: var(--tct-primary-color-rgb);
+
+    --disable-color: var(--color-oil-6);
+    --disable-color-rgb: var(--color-oil-6-rgb);
+
+    --text-color: var(--color-oil-9);
+    --text-color-rgb: var(--color-oil-9-rgb);
+
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.condition-enabled {
+    cursor: pointer;
+}
+
+.condition-disabled {
+    cursor: not-allowed;
+}
+
+
+.size-medium {
+    padding: 0.5rem 1rem;
+    height: 2.5rem;
+}
+
+.size-large {
+    padding: 0.57rem 1.5rem;
+    height: 3rem;
+}
+
+/* input */
+.checkbox > input {
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    width: 80%;
+    height: 80%;
+    opacity: 0;
+}
+
+
+.condition-enabled > input {
+    cursor: pointer;
+}
+
+.condition-disabled > input {
+    cursor: not-allowed;
+}
+
+/* status */
+.checkbox > div {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--border-radius-size-1);
+    transition: box-shadow var(--animation-duration-1);
+}
+
+
+.size-medium > div {
+    width: 1rem;
+    height: 1rem;
+}
+
+.size-large > div {
+    width: 1.3rem;
+    height: 1.3rem;
+}
+
+
+.condition-enabled:hover > div {
+    box-shadow: 0 0 0 var(--border-size-3) rgba(var(--primary-color-rgb), 0.3);
+}
+
+.condition-enabled > input:focus + div {
+    box-shadow: 0 0 0 var(--border-size-3) rgba(var(--primary-color-rgb), 0.5);
+}
+
+.condition-enabled > div {
+    fill: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.condition-disabled > div {
+    color: var(--disable-color);
+    fill: var(--disable-color);
+}
+
+/* title */
+.checkbox > span {
+    user-select: none;
+}
+
+
+.size-medium > span {
+    font-size: var(--font-size-2);
+}
+
+.size-medium > div + span {
+    margin-right: 0.5rem;
+}
+
+.size-large > span {
+    font-size: var(--font-size-3);
+}
+
+.size-large > div + span {
+    margin-right: 0.7rem;
+}
+
+
+.condition-enabled > span {
+    color: var(--text-color);
+}
+
+.condition-disabled > span {
+    color: var(--disable-color);
+}
+
+/* click-animation */
+.click-animation {
+    animation: clickAnimation var(--animation-duration-1);
+}
+
+@keyframes clickAnimation {
+    0% {
+        transform: scale(1, 1)
+    }
+    50% {
+        transform: scale(1.05, 1.05)
+    }
+    100% {
+        transform: scale(1, 1)
+    }
+}
+
+/* error-animation */
+.error-animation {
+    animation: errorAnimation var(--animation-duration-2);
+}
+
+@keyframes errorAnimation {
+    0%, to {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0)
+    }
+    20%, 60% {
+        -webkit-transform: translate3d(-0.3rem, 0, 0);
+        transform: translate3d(-0.3rem, 0, 0)
+    }
+    40%, 80% {
+        -webkit-transform: translate3d(0.3rem, 0, 0);
+        transform: translate3d(0.3rem, 0, 0)
+    }
+}

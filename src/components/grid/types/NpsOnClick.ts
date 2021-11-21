@@ -1,0 +1,1 @@
+export type NpsOnClick = (value: number) => void;

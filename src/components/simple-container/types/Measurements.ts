@@ -1,0 +1,1 @@
+export type Measurements = { width: number | null, height: number | null };
