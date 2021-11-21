@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The-Act Button</title>
+    <style>
+        body {
+            display: flex;
+            direction: rtl;
+        }
+
+        .container-1 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container-1 > button {
+            margin: 1rem 3rem;
+        }
+
+        .container-2 {
+            display: flex;
+        }
+
+        .container-2 > div {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container-2 > div > button {
+            margin: 0.5rem 3rem;
+        }
+
+    </style>
+    <!--    <link rel="stylesheet" href="../../../build-webpack-prd/ButtonExample.css">-->
+</head>
+<body>
+<script>
+    var a;
+</script>
+<script type="module" src="../build-webpack-dev/ButtonExample.js"></script>
+<!--<script type="module" src="../../../build-webpack-prd/ButtonExample.js"></script>-->
+</body>
+</html>

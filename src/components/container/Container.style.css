@@ -1,0 +1,59 @@
+/* container */
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+/* animation-type-na */
+.container.animation-type-na {
+}
+
+/* animation-type-slide */
+.container.animation-type-slide {
+    position: relative;
+    overflow: hidden;
+}
+
+.container.animation-type-slide > div {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transition: right var(--animation-duration-1);
+}
+
+/* animation-type-flip */
+.container.animation-type-flip {
+    perspective: 80rem;
+}
+
+.container.animation-type-flip > div {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+
+.container.animation-type-flip > div > div {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform var(--animation-duration-2);
+    backface-visibility: hidden;
+}
+
+/* animation-type-fade */
+.container.animation-type-fade {
+    position: relative;
+}
+
+.container.animation-type-fade > div {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity var(--animation-duration-2);
+}

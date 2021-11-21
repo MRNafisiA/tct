@@ -1,0 +1,311 @@
+/* base-tooltip */
+.base-tooltip {
+    --background-color: var(--color-white);
+    --background-color-rgb: var(--color-white-rgb);
+
+    position: relative;
+    display: inline-block;
+}
+
+/* target */
+.target {
+    position: relative;
+    z-index: 2;
+}
+
+/* content */
+.content {
+    position: absolute;
+    display: none;
+    z-index: 2;
+}
+
+
+.show > .content,
+.show-on-hover:hover > .content {
+    display: flex;
+}
+
+
+.direction-top > .content {
+    bottom: 100%;
+    width: 100%;
+    margin-bottom: 0.8rem;
+}
+
+.direction-right > .content {
+    left: 100%;
+    height: 100%;
+    margin-left: 0.8rem;
+}
+
+.direction-bottom > .content {
+    top: 100%;
+    width: 100%;
+    margin-top: 0.8rem;
+}
+
+.direction-left > .content {
+    right: 100%;
+    height: 100%;
+    margin-right: 0.8rem;
+}
+
+
+.align-start > .content {
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.align-center > .content {
+    justify-content: center;
+    align-items: center;
+}
+
+.align-end > .content {
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+
+.direction-top.align-start > .content,
+.direction-bottom.align-start > .content {
+    left: 100%;
+}
+
+.direction-top.align-end > .content,
+.direction-bottom.align-end > .content {
+    right: 100%;
+}
+
+.direction-right.align-start > .content,
+.direction-left.align-start > .content {
+    bottom: 100%;
+}
+
+.direction-right.align-center > .content,
+.direction-left.align-center > .content {
+    top: 0;
+}
+
+.direction-right.align-end > .content,
+.direction-left.align-end > .content {
+    top: 100%;
+}
+
+.has-arrow.direction-top.align-start > .content,
+.has-arrow.direction-bottom.align-start > .content {
+    margin-left: -1.5rem;
+}
+
+.has-arrow.direction-top.align-end > .content,
+.has-arrow.direction-bottom.align-end > .content {
+    margin-right: -1.5rem;
+}
+
+.has-arrow.direction-right.align-start > .content,
+.has-arrow.direction-left.align-start > .content {
+    margin-bottom: -1.5rem;
+}
+
+.has-arrow.direction-right.align-end > .content,
+.has-arrow.direction-left.align-end > .content {
+    margin-top: -1.5rem;
+}
+
+/* content-container */
+.content > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--border-radius-size-3);
+    background: var(--background-color);
+    box-shadow: 0 0 0.1875rem 0 rgba(0, 0, 0, 0.4);
+    padding: 1rem;
+}
+
+/* arrow */
+.has-arrow > .content > div::after {
+    content: ' ';
+    position: absolute;
+    background: var(--background-color);
+}
+
+
+.has-arrow.direction-top > .content > div::after {
+    width: 1.3rem;
+    height: 0.6rem;
+    bottom: 0;
+}
+
+.has-arrow.direction-right > .content > div::after {
+    width: 0.7rem;
+    height: 1.3rem;
+    left: 0;
+}
+
+.has-arrow.direction-bottom > .content > div::after {
+    width: 1.3rem;
+    height: 0.6rem;
+    top: 0;
+}
+
+.has-arrow.direction-left > .content > div::after {
+    width: 0.7rem;
+    height: 1.3rem;
+    right: 0;
+}
+
+
+.has-arrow.direction-top.align-end > .content > div::after,
+.has-arrow.direction-bottom.align-end > .content > div::after {
+    right: 0.5rem;
+}
+
+.has-arrow.direction-top.align-start > .content > div::after,
+.has-arrow.direction-bottom.align-start > .content > div::after {
+    left: 0.5rem;
+}
+
+.has-arrow.direction-right.align-start > .content > div::after,
+.has-arrow.direction-left.align-start > .content > div::after {
+    bottom: 0.35rem;
+}
+
+.has-arrow.direction-right.align-end > .content > div::after,
+.has-arrow.direction-left.align-end > .content > div::after {
+    top: 0.35rem;
+}
+
+/* arrow-hider */
+.has-arrow > .content > div::before {
+    content: ' ';
+    position: absolute;
+    width: 0.7rem;
+    height: 0.7rem;
+    background: var(--background-color);
+    transform: rotate(45deg);
+    box-shadow: 0 0 0.1875rem 0 rgba(0, 0, 0, 0.4);
+}
+
+
+.has-arrow.direction-top > .content > div::before {
+    bottom: -0.3rem;
+}
+
+.has-arrow.direction-right > .content > div::before {
+    left: -0.3rem;
+}
+
+.has-arrow.direction-bottom > .content > div::before {
+    top: -0.3rem;
+}
+
+.has-arrow.direction-left > .content > div::before {
+    right: -0.3rem;
+}
+
+
+.has-arrow.direction-top.align-start > .content > div::before,
+.has-arrow.direction-bottom.align-start > .content > div::before {
+    left: 0.7rem;
+}
+
+.has-arrow.direction-top.align-end > .content > div::before,
+.has-arrow.direction-bottom.align-end > .content > div::before {
+    right: 0.7rem;
+}
+
+.has-arrow.direction-right.align-start > .content > div::before,
+.has-arrow.direction-left.align-start > .content > div::before {
+    bottom: 0.55rem;
+}
+
+.has-arrow.direction-right.align-end > .content > div::before,
+.has-arrow.direction-left.align-end > .content > div::before {
+    top: 0.55rem;
+}
+
+/* hover-helper */
+.hover-helper {
+    position: absolute;
+    display: none;
+    width: 3rem;
+    height: 3rem;
+    transform: rotate(45deg);
+    z-index: 1;
+}
+
+
+.show > .hover-helper,
+.show-on-hover:hover > .hover-helper {
+    display: flex;
+}
+
+
+.direction-top > .hover-helper {
+    bottom: calc(100% - 1.1rem);
+}
+
+.direction-top.align-start > .hover-helper {
+    left: calc(100% - 1.5rem);
+}
+
+.direction-top.align-center > .hover-helper {
+    left: calc(50% - 1.5rem);
+}
+
+.direction-top.align-end > .hover-helper {
+    right: calc(100% - 1.5rem);
+}
+
+
+.direction-right > .hover-helper {
+    left: calc(100% - 1.1rem);
+}
+
+.direction-right.align-start > .hover-helper {
+    bottom: calc(100% - 1.5rem);
+}
+
+.direction-right.align-center > .hover-helper {
+    bottom: calc(50% - 1.5rem);
+}
+
+.direction-right.align-end > .hover-helper {
+    top: calc(100% - 1.5rem);
+}
+
+
+.direction-bottom > .hover-helper {
+    top: calc(100% - 1.1rem);
+}
+
+.direction-bottom.align-start > .hover-helper {
+    left: calc(100% - 1.5rem);
+}
+
+.direction-bottom.align-center > .hover-helper {
+    left: calc(50% - 1.5rem);
+}
+
+.direction-bottom.align-end > .hover-helper {
+    right: calc(100% - 1.5rem);
+}
+
+
+.direction-left > .hover-helper {
+    right: calc(100% - 1.1rem);
+}
+
+.direction-left.align-start > .hover-helper {
+    bottom: calc(100% - 1.5rem);
+}
+
+.direction-left.align-center > .hover-helper {
+    bottom: calc(50% - 1.5rem);
+}
+
+.direction-left.align-end > .hover-helper {
+    top: calc(100% - 1.5rem);
+}

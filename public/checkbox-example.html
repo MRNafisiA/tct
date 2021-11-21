@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The-Act Checkbox</title>
+    <style>
+        body {
+            display: flex;
+            direction: rtl;
+        }
+
+        .container-1 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container-1 > label:nth-child(3),
+        .container-1 > label:nth-child(4),
+        .container-1 > label:nth-child(5),
+        .container-1 > label:nth-child(9) {
+            margin-right: 4rem;
+        }
+
+        .container-1 > label:nth-child(6),
+        .container-1 > label:nth-child(7),
+        .container-1 > label:nth-child(8),
+        .container-1 > label:nth-child(10) {
+            margin-right: 8rem;
+        }
+
+        .container-1 > label:nth-child(11) {
+            margin-right: 12rem;
+        }
+
+        .container-1 > label:nth-child(12),
+        .container-1 > label:nth-child(13) {
+            margin-right: 16rem;
+        }
+
+        .container-2 {
+            display: flex;
+        }
+
+        .container-2 > div {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container-2 > div > button {
+            margin: 0.5rem 3rem;
+        }
+    </style>
+    <!--    <link rel="stylesheet" href="../../../build-webpack-prd/CheckboxExample.css">-->
+</head>
+<body>
+<script>
+    var a = [];
+    var b;
+</script>
+<script type="module" src="../../../build-webpack-dev/CheckboxExample.js"></script>
+<!--<script type="module" src="../../../build-webpack-prd/CheckboxExample.js"></script>-->
+</body>
+</html>

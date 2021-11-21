@@ -1,0 +1,1 @@
+export type PageOnClick = (page: number) => void;

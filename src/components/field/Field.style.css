@@ -1,0 +1,341 @@
+/* field */
+.field {
+    --primary-color: var(--tct-primary-color);
+    --primary-color-rgb: var(--tct-primary-color-rgb);
+
+    --background-color: var(--color-white);
+    --background-color-rgb: var(--color-white-rgb);
+
+    --text-color: var(--color-oil-9);
+    --text-color-rgb: var(--color-oil-9-rgb);
+
+    --disabled-color: var(--color-oil-6);
+    --disabled-color-rgb: var(--color-oil-6-rgb);
+
+    --status-default-color: var(--color-oil-8);
+    --status-default-color-rgb: var(--color-oil-8-rgb);
+
+    --status-valid-color: var(--tct-primary-color);
+    --status-valid-color-rgb: var(--tct-primary-color-rgb);
+
+    --status-invalid-color: var(--color-infrared-7);
+    --status-invalid-color-rgb: var(--color-infrared-7-rgb);
+
+    --item-text-color: var(--color-white);
+    --item-text-color-rgb: var(--color-white-rgb);
+
+    --item-remove-background: var(--color-infrared-7);
+    --item-remove-background-rgb: var(--color-infrared-7-rgb);
+
+    display: inline-flex;
+    flex-direction: column;
+    background: var(--background-color);
+    padding: calc((var(--font-size-1) * var(--font-scale) / 2) + 0.5rem) 0.5rem 0.5rem 0.5rem;
+}
+
+
+.size-small {
+    width: 10rem;
+}
+
+.size-medium {
+    width: 18rem;
+}
+
+.size-large {
+    width: 30rem;
+}
+
+/* label */
+.field > label {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    border: var(--border-size-1) solid;
+    padding: calc(0.125rem + (var(--font-size-1) * var(--font-scale) / 2)) 0.625rem 0.5rem 0.625rem;
+    border-radius: var(--border-radius-size-2);
+    transition: box-shadow var(--animation-duration-1), border-color var(--animation-duration-1);
+    box-shadow: 0 0 0 0 transparent;
+}
+
+.condition-enabled > label {
+    cursor: text;
+}
+
+.condition-enabled.status-default > label {
+    border-color: var(--status-default-color);
+}
+
+.condition-enabled.status-valid > label {
+    border-color: var(--status-valid-color);
+}
+
+.condition-enabled.status-invalid > label {
+    border-color: var(--status-invalid-color);
+}
+
+.condition-enabled.status-default.checking > label {
+    animation: statusDefaultCheckingAnimation var(--animation-duration-3) infinite;
+}
+
+.condition-enabled.status-valid.checking > label {
+    animation: statusValidCheckingAnimation var(--animation-duration-3) infinite;
+}
+
+.condition-enabled.status-invalid.checking > label {
+    animation: statusInvalidCheckingAnimation var(--animation-duration-3) infinite;
+}
+
+.condition-enabled.status-valid > label:focus-within {
+    box-shadow: 0 0 0 0.1875rem rgba(var(--status-valid-color-rgb), 0.5);
+}
+
+.condition-enabled.status-invalid > label:focus-within {
+    box-shadow: 0 0 0 0.1875rem rgba(var(--status-invalid-color-rgb), 0.5);
+}
+
+.condition-enabled.status-default > label:focus-within,
+.condition-enabled.status-default.checking > label {
+    box-shadow: 0 0 0 0.1875rem rgba(var(--status-valid-color-rgb), 0.5);
+    border-color: var(--status-valid-color);
+}
+
+.condition-disabled > label {
+    border-color: var(--disabled-color);
+    cursor: not-allowed;
+}
+
+/* input */
+.field > label > input,
+.field > label > textarea {
+    width: 100%;
+    font-size: var(--font-size-2);
+    background: transparent;
+    color: var(--text-color);
+}
+
+.field > label > textarea {
+    resize: vertical;
+}
+
+.condition-disabled > label > input,
+.condition-disabled > label > textarea {
+    cursor: not-allowed;
+}
+
+.condition-disabled > label > textarea {
+    resize: none;
+}
+
+/* title */
+.field > label > span {
+    position: absolute;
+    top: calc(var(--font-size-1) * var(--font-scale) / -2);
+    right: 1rem;
+    font-size: var(--font-size-1);
+    background: var(--background-color);
+    padding: 0 0.5rem;
+    transition: color var(--animation-duration-1);
+    user-select: none;
+}
+
+.condition-disabled > label > span {
+    color: var(--disabled-color);
+}
+
+.condition-enabled.status-default > label > span {
+    color: var(--status-default-color);
+}
+
+.condition-enabled.status-invalid > label > span {
+    color: var(--status-invalid-color);
+}
+
+.condition-enabled.status-valid > label > span {
+    color: var(--status-valid-color);
+}
+
+.condition-enabled.status-default.checking > label > span,
+.condition-enabled.status-default > label:focus-within > span {
+    color: var(--status-valid-color);
+}
+
+/* items */
+.field > label > ul {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.field > label > ul > li {
+    border-radius: var(--border-radius-size-2);
+    color: var(--item-text-color);
+    padding: 0.2rem 0.5rem;
+    margin: 0 0 0.3rem 0.5rem;
+    user-select: none;
+    font-size: var(--font-size-2);
+    transition: background var(--animation-duration-1);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.field > label > ul > li > div {
+    opacity: 0;
+    position: absolute;
+    height: 1rem;
+    fill: var(--item-text-color);
+}
+
+.condition-enabled > label > ul > li:not(.item-locked) {
+    background: var(--primary-color);
+    cursor: pointer;
+}
+
+.condition-enabled > label > ul > li:not(.item-locked):hover {
+    background: var(--item-remove-background);
+    color: transparent;
+}
+
+.condition-enabled > label > ul > li:not(.item-locked):hover > div {
+    opacity: 1;
+}
+
+.condition-enabled > label > ul > li.item-locked,
+.condition-disabled > label > ul > li {
+    background: var(--disabled-color);
+    cursor: not-allowed;
+}
+
+/* message */
+.field > div {
+    display: flex;
+    align-items: center;
+    padding: 0.375rem 0.25rem 0.25rem 0.25rem;
+}
+
+.field > div > div {
+    height: 1rem;
+    transition: color var(--animation-duration-1), fill var(--animation-duration-1);
+}
+
+.field > div > span {
+    font-size: var(--font-size-1);
+    flex-grow: 1;
+    margin-right: 0.5rem;
+    transition: color var(--animation-duration-1);
+    user-select: none;
+}
+
+.condition-enabled.status-default > div > div {
+    fill: var(--status-default-color);
+}
+
+.condition-enabled.status-valid > div > div {
+    fill: var(--status-valid-color);
+}
+
+.condition-enabled.status-default > div > span,
+.condition-enabled.status-default > div > div {
+    color: var(--status-default-color);
+}
+
+.condition-enabled.status-valid > div > span,
+.condition-enabled.status-valid > div > div {
+    color: var(--status-valid-color);
+}
+
+.condition-enabled.status-invalid > div > span,
+.condition-enabled.status-invalid > div > div {
+    color: var(--status-invalid-color);
+}
+
+.condition-enabled.status-invalid > div > div {
+    fill: var(--status-invalid-color);
+}
+
+.condition-enabled.status-default.checking > label + div > span,
+.condition-enabled.status-default > label:focus-within + div > span,
+.condition-enabled.status-default.checking > label + div > div,
+.condition-enabled.status-default > label:focus-within + div > div {
+    color: var(--status-valid-color);
+}
+
+.condition-enabled.status-default > label:focus-within + div > div,
+.condition-enabled.status-default.checking > label + div > div {
+    fill: var(--status-valid-color);
+}
+
+.condition-disabled > div > div {
+    fill: var(--disabled-color);
+}
+
+.condition-disabled > div > span,
+.condition-disabled > div > div {
+    color: var(--disabled-color);
+}
+
+/* default-checking-animation */
+@keyframes statusDefaultCheckingAnimation {
+    0% {
+        box-shadow: 0 0 0 0.1875rem rgba(var(--status-valid-color-rgb), 0.5);
+    }
+    50% {
+        box-shadow: 0 0 0 0 rgba(var(--status-valid-color-rgb), 0.5);
+    }
+    100% {
+        box-shadow: 0 0 0 0.1875rem rgba(var(--status-valid-color-rgb), 0.5);
+    }
+}
+
+/* valid-checking-animation */
+@keyframes statusValidCheckingAnimation {
+    0% {
+        box-shadow: 0 0 0 0.1875rem rgba(var(--status-valid-color-rgb), 0.5);
+    }
+    50% {
+        box-shadow: 0 0 0 0 rgba(var(--status-valid-color-rgb), 0.5);
+    }
+    100% {
+        box-shadow: 0 0 0 0.1875rem rgba(var(--status-valid-color-rgb), 0.5);
+    }
+}
+
+/* invalid-checking-animation */
+@keyframes statusInvalidCheckingAnimation {
+    0% {
+        box-shadow: 0 0 0 0.1875rem rgba(var(--status-invalid-color-rgb), 0.5);
+    }
+    50% {
+        box-shadow: 0 0 0 0 rgba(var(--status-invalid-color-rgb), 0.5);
+    }
+    100% {
+        box-shadow: 0 0 0 0.1875rem rgba(var(--status-invalid-color-rgb), 0.5);
+    }
+}
+
+/* locked-item-error-animation */
+.locked-item-error-animation {
+    animation: itemErrorAnimation var(--animation-duration-2);
+}
+
+@keyframes itemErrorAnimation {
+    0%, to {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0)
+    }
+    20%, 60% {
+        -webkit-transform: translate3d(-0.3rem, 0, 0);
+        transform: translate3d(-0.3rem, 0, 0)
+    }
+    40%, 80% {
+        -webkit-transform: translate3d(0.3rem, 0, 0);
+        transform: translate3d(0.3rem, 0, 0)
+    }
+}
+
+/* other */
+.contain-message {
+
+}
